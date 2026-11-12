@@ -7,283 +7,194 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&family=Montserrat:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courgette&family=Montserrat:wght@400;500;600&family=Young+Serif&display=swap" rel="stylesheet">
 <style>
-/* Frödinges profil: brunt #4B2D1E, kräm #F9F3EB, beige #EBDDC3, Lynx Serif (här ersatt med Young Serif), Montserrat, Courgette.
-   Kategorifärger från kartongerna: lila kladdkaka, grön tårta, blå paj, gul citron/ostkaka. */
+/* Frödinges profil: brunt #4B2D1E, kräm #F9F3EB, beige #EBDDC3. Rubriker Lynx Serif (ersatt med Young Serif), text Montserrat.
+   Kategorifärgerna är tagna från kartongerna. */
 :root{
- --brun:#4b2d1e;--brun-m:#140c08;--kram:#f9f3eb;--beige:#ebddc3;--vit:#fff;--text:#4b2d1e;--mjuk:#7a6253;
- --lila:#9a85bd;--gron:#a9bf55;--bla:#8198cc;--gul:#dcbc3e;
- --serif:"Lynx Serif","Young Serif",Georgia,serif;--sans:Montserrat,Arial,sans-serif;--skrift:Courgette,cursive;
+ --brun:#4b2d1e;--mork:#140c08;--kram:#f9f3eb;--beige:#ebddc3;--yta:#fff;--text:#4b2d1e;--dov:#76604f;--linje:#dccbb3;
+ --gul:#d9b93c;--lila:#9a85bd;--bla:#8198cc;--gron:#a3b94f;
+ --serif:"Lynx Serif","Young Serif",Georgia,serif;--sans:Montserrat,Arial,sans-serif;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--kram:#1d140f;--beige:#2b1f18;--vit:#241913;--text:#f3e7d8;--mjuk:#c9b4a2}}
-:root[data-theme="dark"]{--kram:#1d140f;--beige:#2b1f18;--vit:#241913;--text:#f3e7d8;--mjuk:#c9b4a2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--kram:#1b130e;--beige:#271c15;--yta:#211812;--text:#f1e4d3;--dov:#c4ad99;--linje:#3a2b21}}
+:root[data-theme="dark"]{--kram:#1b130e;--beige:#271c15;--yta:#211812;--text:#f1e4d3;--dov:#c4ad99;--linje:#3a2b21}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--kram);color:var(--text);font:400 17px/1.65 var(--sans)}
-img{display:block;max-width:100%}
+body{margin:0;background:var(--kram);color:var(--text);font:400 16px/1.7 var(--sans)}
+img,video{display:block;max-width:100%}
 a{color:inherit}
-.w{max-width:1240px;margin:0 auto;padding:0 32px}
-h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;margin:0}
-.skrift{font-family:var(--skrift);font-size:22px;color:var(--mjuk)}
-.demo{background:var(--brun-m);color:#d9c7b5;font-size:12px;text-align:center;padding:6px 16px}
+.w{max-width:1200px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;margin:0}
+.demo{background:var(--mork);color:#cdb9a6;font-size:12px;text-align:center;padding:6px 16px}
 .demo a{color:#fff}
 
-/* Sidhuvud med hängande logga, som fliken på kartongerna */
-header{position:sticky;top:0;z-index:30;background:var(--kram);border-bottom:1px solid color-mix(in srgb,var(--brun) 14%,transparent)}
-header .w{display:flex;align-items:center;justify-content:space-between;height:72px}
-.flik{position:relative;align-self:flex-start;width:170px;height:72px}
-.flik img{position:absolute;top:0;left:0;width:170px;filter:drop-shadow(0 6px 10px rgba(75,45,30,.25))}
-nav{display:flex;gap:34px}
-nav a{font:600 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--text)}
-nav a:hover{color:var(--lila)}
-.knapp{display:inline-flex;align-items:center;gap:10px;background:var(--brun);color:#fff;font:600 14px var(--sans);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:15px 28px;border-radius:999px;border:0;cursor:pointer;transition:transform .2s,background .2s}
-.knapp:hover{transform:translateY(-2px);background:var(--brun-m)}
-.knapp.ljus{background:var(--kram);color:var(--brun)}
+header{position:absolute;top:30px;left:0;right:0;z-index:20;color:#fff}
+header .w{display:flex;justify-content:space-between;align-items:flex-start}
+.flik{display:block;width:150px;margin-top:-30px}
+.flik img{width:150px}
+nav{display:flex;gap:30px;padding-top:22px}
+nav a{font:500 14px var(--sans);text-decoration:none;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+nav a:hover{text-decoration:underline;text-underline-offset:5px}
 
-/* Vågig kant som på kartongernas överkant */
-.vag{display:block;width:100%;height:28px}
+.hero{position:relative;height:min(92vh,860px);min-height:540px;background:#000;color:#fff;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,12,8,.7),rgba(20,12,8,0) 55%),linear-gradient(180deg,rgba(20,12,8,.45),rgba(20,12,8,0) 25%)}
+.hero .w{position:absolute;left:0;right:0;bottom:70px;z-index:1}
+.hero h1{font-size:clamp(42px,6vw,82px);max-width:820px}
+.hero .rad{display:flex;align-items:center;gap:28px;margin-top:26px;flex-wrap:wrap}
+.knapp{display:inline-block;background:var(--kram);color:var(--brun);font:600 15px var(--sans);text-decoration:none;padding:14px 26px;border-radius:999px}
+.knapp:hover{background:#fff}
+.hero .ljud{background:none;border:1px solid rgba(255,255,255,.6);color:#fff;font:500 13px var(--sans);padding:9px 16px;border-radius:999px;cursor:pointer}
 
-.hero{position:relative;min-height:min(86vh,780px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,12,8,.8),rgba(20,12,8,.35) 60%,rgba(20,12,8,.1)),linear-gradient(90deg,rgba(20,12,8,.45),transparent 60%)}
-.hero .w{position:relative;z-index:1;padding-bottom:110px;width:100%}
-.hero .skrift{color:#f3e3c8;font-size:26px}
-.hero h1{font-size:clamp(46px,7vw,96px);max-width:900px;margin:8px 0 22px;text-shadow:0 2px 20px rgba(0,0,0,.35)}
-.hero p{max-width:540px;font-size:19px;margin:0 0 32px;color:#f5ebe0}
-.hero .vag{position:absolute;bottom:-1px;left:0;z-index:2}
+/* Kategoribanden ser ut som kartongernas överkant: färgfält, vågig kant, förpackningen i fokus */
+.band{position:relative;color:#fff}
+.band .w{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;min-height:520px;padding-top:60px;padding-bottom:60px}
+.band h2{font-size:clamp(44px,5.4vw,72px);text-shadow:0 2px 0 rgba(75,45,30,.5)}
+.band p{max-width:460px;font-size:17px;margin:16px 0 22px}
+.band ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-weight:500;font-size:15px}
+.band ul li::before{content:"·";margin-right:8px;opacity:.7}
+.band img{width:100%;max-width:480px;margin:auto;filter:drop-shadow(0 26px 24px rgba(40,20,10,.35))}
+.band.om .w>div{order:2}
+.band svg.kant{position:absolute;left:0;bottom:-1px;width:100%;height:22px}
+.b-ost{background:var(--gul);color:var(--brun)}.b-ost h2{color:#fff}
+.b-kladd{background:var(--lila)}.b-paj{background:var(--bla)}.b-tarta{background:var(--gron)}
 
-.intro{text-align:center;padding:70px 0 40px}
-.intro img{width:131px;margin:0 auto 18px;opacity:.9}
-.intro h2{font-size:clamp(32px,4vw,48px);max-width:760px;margin:0 auto 14px}
-.intro p{max-width:640px;margin:0 auto;color:var(--mjuk)}
+.text-sek{padding:110px 0}
+.text-sek .w{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.text-sek img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px}
+.text-sek h2{font-size:clamp(34px,4vw,52px);margin-bottom:22px}
+.text-sek p{color:var(--dov);margin:0 0 16px;max-width:520px}
+.text-sek a.las{font-weight:600;text-decoration:none;border-bottom:2px solid currentColor}
+.mustasch{width:110px;margin-bottom:22px}
 
-/* Kategorier i kartongfärgerna */
-.kat{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;padding:30px 0 100px}
-.kort{position:relative;border-radius:22px;overflow:hidden;color:#fff;text-decoration:none;min-height:430px;display:flex;flex-direction:column;justify-content:space-between;padding:26px 24px 0;box-shadow:0 18px 40px -22px rgba(75,45,30,.55);transition:transform .3s}
-.kort:hover{transform:translateY(-6px)}
-.kort h3{font-size:36px;text-shadow:0 2px 0 rgba(75,45,30,.55),0 0 1px var(--brun)}
-.kort span{font:600 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;opacity:.9}
-.kort img{width:88%;margin:16px auto -18px;filter:drop-shadow(0 14px 18px rgba(0,0,0,.35));transition:transform .4s}
-.kort:hover img{transform:rotate(-3deg) scale(1.04)}
-.k-ost{background:var(--gul)}.k-kladd{background:var(--lila)}.k-paj{background:var(--bla)}.k-tarta{background:var(--gron)}
-
-/* Sortiment */
-.sort{background:var(--beige);padding:100px 0}
-.rubrad{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
-.rubrad h2{font-size:clamp(40px,5vw,64px)}
-.flikar{display:flex;gap:10px;flex-wrap:wrap}
-.flikar button{font:600 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;border:2px solid var(--brun);background:transparent;color:var(--text);padding:10px 18px;border-radius:999px;cursor:pointer}
-.flikar button[aria-selected=true]{background:var(--brun);color:#fff}
-.hylla{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 26px}
-.prod{flex:0 0 250px;scroll-snap-align:start;background:var(--vit);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px -18px rgba(75,45,30,.45)}
-.prod .top{height:200px;display:flex;align-items:center;justify-content:center;padding:18px;position:relative}
-.prod .top svg{position:absolute;bottom:-1px;left:0;width:100%;height:16px}
-.prod img{max-height:100%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.25))}
-.prod div.txt{padding:16px 20px 22px}
-.prod h3{font-size:22px}
-.prod small{color:var(--mjuk);font-size:14px}
-
-/* Berättelse med överlappande kort */
-.bert{padding:110px 0}
-.bert .w{display:grid;grid-template-columns:1.15fr 1fr;align-items:center}
-.bert .bild{border-radius:26px;overflow:hidden;aspect-ratio:4/3}
-.bert .bild img{width:100%;height:100%;object-fit:cover}
-.bert .text{background:var(--vit);border-radius:26px;padding:50px;margin-left:-90px;position:relative;box-shadow:0 30px 60px -30px rgba(75,45,30,.5)}
-.bert h2{font-size:clamp(34px,3.6vw,50px);margin:6px 0 18px}
-.bert p{color:var(--mjuk);margin:0 0 14px}
-
-/* 1955 */
-.ostkaka{background:var(--gul);color:var(--brun);overflow:hidden}
-.ostkaka .w{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding-top:90px;padding-bottom:90px}
-.ar{font:400 clamp(110px,15vw,200px)/.8 var(--serif);color:#fff;text-shadow:0 4px 0 rgba(75,45,30,.35)}
-.ostkaka h2{font-size:clamp(34px,4vw,54px);margin:14px 0 18px}
-.ostkaka p{max-width:520px}
-.ostkaka img{width:100%;max-width:520px;margin:auto;filter:drop-shadow(0 30px 30px rgba(75,45,30,.35));transform:rotate(-4deg)}
-
-/* Film */
-.film{background:var(--brun);color:var(--kram);padding:100px 0}
-.film .rubrad p{color:#d8c4b0;max-width:420px;margin:0}
-.film .skrift{color:#e3caa6}
-.vids{display:grid;grid-template-columns:1.6fr 1fr;gap:22px}
-.vid{position:relative;border:0;padding:0;width:100%;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#000;cursor:pointer;display:block}
-.vid img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s,transform .6s}
-.vid:hover img{opacity:1;transform:scale(1.03)}
-.vid .spela{position:absolute;left:24px;bottom:22px;display:flex;align-items:center;gap:14px;color:#fff;font:600 14px var(--sans);letter-spacing:.1em;text-transform:uppercase}
-.vid .spela i{width:62px;height:62px;border-radius:50%;background:var(--kram);display:flex;align-items:center;justify-content:center}
-.vid .spela i::after{content:"";border-left:18px solid var(--brun);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:5px}
+.film{background:var(--mork);color:var(--kram);padding:100px 0}
+.film h2{font-size:clamp(34px,4vw,52px);margin-bottom:34px}
+.vids{display:grid;grid-template-columns:1.6fr 1fr;gap:20px}
+.vid{position:relative;border:0;padding:0;width:100%;aspect-ratio:16/9;background:#000;cursor:pointer;display:block;overflow:hidden}
+.vid img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:opacity .3s}
+.vid:hover img{opacity:1}
+.vid span{position:absolute;left:20px;bottom:18px;color:#fff;font:500 15px var(--sans);display:flex;align-items:center;gap:12px}
+.vid span::before{content:"";width:0;height:0;border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.sido{display:grid;gap:22px}
-.yt{display:flex;align-items:center;justify-content:center;border:2px solid #7b5a47;border-radius:22px;text-decoration:none;font:400 26px var(--serif);min-height:120px}
-.yt:hover{background:var(--kram);color:var(--brun)}
+.film .alla{display:inline-block;margin-top:24px;color:var(--beige);font-weight:500}
 
-/* Hållbarhet */
-.gron{position:relative;min-height:640px;display:flex;align-items:center;color:var(--brun)}
-.gron>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.gron .w{position:relative;width:100%}
-.gron .kortet{background:var(--kram);border-radius:26px;padding:46px;max-width:540px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
-.gron h2{font-size:clamp(34px,4vw,52px);margin:6px 0 16px}
-.fakta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
-.fakta div{background:var(--beige);border-radius:16px;padding:16px}
-.fakta b{display:block;font:400 30px var(--serif)}
-.fakta span{font-size:13px;color:var(--mjuk)}
+.ansvar{position:relative;color:#fff;min-height:620px;display:flex;align-items:flex-end}
+.ansvar>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ansvar::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,12,8,.75),rgba(20,12,8,0) 60%)}
+.ansvar .w{position:relative;z-index:1;padding-bottom:70px;width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:end}
+.ansvar h2{font-size:clamp(36px,4.6vw,60px)}
+.ansvar p{margin:0;color:#f0e4d6}
 
-/* Ostkakeboden + kontakt */
-.kontakt{padding:100px 0}
-.kontakt .w{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.ruta{border-radius:24px;padding:34px;background:var(--vit);box-shadow:0 10px 30px -20px rgba(75,45,30,.4)}
-.ruta.farg{background:var(--lila);color:#fff}
-.ruta h3{font-size:30px;margin-bottom:12px}
-.ruta p{margin:0 0 6px}
-.ruta .skrift{color:inherit;opacity:.85;font-size:19px}
+footer{background:var(--brun);color:#e6d6c4;padding:70px 0 26px;font-size:15px}
+footer .cols{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid #6b4a38}
+footer img{width:150px;margin-bottom:12px}
+footer h3{font:600 14px var(--sans);color:#fff;margin:0 0 10px}
+footer p{margin:0 0 4px}
+footer a{text-decoration:none}footer a:hover{text-decoration:underline}
+footer .botten{padding-top:20px;font-size:13px;color:#bba48f;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-footer{background:var(--brun-m);color:#cdb9a6;padding:70px 0 30px;font-size:15px}
-footer .cols{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:40px;padding-bottom:40px;border-bottom:1px solid #3a2a20}
-footer img.l{width:170px;margin-bottom:16px}
-footer h4{font:600 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 14px}
-footer ul{list-style:none;padding:0;margin:0}footer li{margin-bottom:8px}
-footer a{text-decoration:none}footer a:hover{color:#fff}
-footer .botten{padding-top:22px;font-size:13px;color:#8d7867;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-
-@media (max-width:1000px){
+@media (max-width:900px){
  nav{display:none}
- .kat{grid-template-columns:1fr 1fr}
- .bert .w,.ostkaka .w,.vids,.kontakt .w{grid-template-columns:1fr}
- .bert .text{margin:-70px 20px 0;padding:34px}
+ .band .w,.text-sek .w,.vids,.ansvar .w{grid-template-columns:1fr}
+ .band.om .w>div{order:0}
+ .band .w{min-height:0;gap:20px}
+ .band img{max-width:340px}
  footer .cols{grid-template-columns:1fr 1fr}
 }
-@media (max-width:600px){
+@media (max-width:560px){
  .w{padding:0 16px}
- .flik,.flik img{width:130px}
- .kat{grid-template-columns:1fr}
- .kort{min-height:360px}
- .hero .w{padding-bottom:80px}
- .gron .kortet{padding:30px 22px}
- .fakta{grid-template-columns:1fr}
+ .flik,.flik img{width:116px}
+ .hero .w{bottom:44px}
+ .text-sek{padding:70px 0}
  footer .cols{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-<div class="demo">Förslag från Elevate Studio – inte Frödinges officiella webbplats. Innehåll och bilder © Orkla / Frödinge. <a href="https://www.frodinge.se">frodinge.se</a></div>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
- <defs><path id="vagform" d="M0 28V14c20 0 20-14 40-14s20 14 40 14 20-14 40-14 20 14 40 14 20-14 40-14 20 14 40 14V28z"/>
- <pattern id="vagm" width="160" height="28" patternUnits="userSpaceOnUse"><use href="#vagform" style="fill:var(--kram)"/></pattern></defs>
-</svg>
+<div class="demo">Förslag från Elevate Studio – inte Frödinges officiella webbplats. Innehåll, bilder och film © Orkla / Frödinge. <a href="https://www.frodinge.se">frodinge.se</a></div>
 
 <header><div class="w">
  <a class="flik" href="#top" aria-label="Frödinge, till toppen"><img src="img/logo.png" alt="Frödinge Småland 1929"></a>
- <nav><a href="#sortiment">Produkter</a><a href="#om">Om Frödinge</a><a href="#filmer">Filmer</a><a href="#ansvar">Vårt ansvar</a><a href="#kontakt">Kontakt</a></nav>
+ <nav><a href="#ostkakor">Produkter</a><a href="#om">Om Frödinge</a><a href="#filmer">Filmer</a><a href="#ansvar">Vårt ansvar</a><a href="#kontakt">Kontakt</a></nav>
 </div></header>
 
 <main id="top">
 <section class="hero">
- <img src="img/fr02.jpg" alt="Ostkaka med jordgubbar på dukat bord">
+ <video src="img/hero.mp4" poster="img/hero.jpg" autoplay muted loop playsinline aria-label="Klipp ur Frödinges reklamfilm"></video>
  <div class="w">
-  <div class="skrift">Bakat med småländsk stolthet sedan 1929</div>
   <h1>Ingen dag är komplett utan en ordentlig fika!</h1>
-  <p>Ostkakor, kladdkakor, pajer och klassiska tårtor – bakade i Frödinge med svensk mjölk och utvalda råvaror, gärna lokala.</p>
-  <a class="knapp ljus" href="#sortiment">Låt det smaka →</a>
+  <div class="rad"><a class="knapp" href="#ostkakor">Se sortimentet</a><button class="ljud" id="paus">Pausa filmen</button></div>
  </div>
- <svg class="vag" viewBox="0 0 1600 28" preserveAspectRatio="none"><rect width="1600" height="28" fill="url(#vagm)"/></svg>
 </section>
 
-<section class="intro"><div class="w">
- <img src="img/moustache.svg" alt="">
- <h2>Bakat i Småland, med kärlek och omtanke</h2>
- <p>Frödinge är stolta över varje produkt som bakas här i Småland. Med utvalda råvaror och gärna lokala – för er och oss att njuta lite extra.</p>
-</div></section>
-
-<section class="w kat" aria-label="Kategorier">
- <a class="kort k-ost" href="#sortiment" data-tab="0"><div><span>5 produkter</span><h3>Ostkakor</h3></div><img src="img/p-ostkaka600.png" alt=""></a>
- <a class="kort k-kladd" href="#sortiment" data-tab="1"><div><span>7 produkter</span><h3>Kladdkakor</h3></div><img src="img/p-kladdkaka.png" alt=""></a>
- <a class="kort k-paj" href="#sortiment" data-tab="2"><div><span>2 produkter</span><h3>Dessertpajer</h3></div><img src="img/p-blabarspaj.png" alt=""></a>
- <a class="kort k-tarta" href="#sortiment" data-tab="3"><div><span>3 produkter</span><h3>Klassiska tårtor</h3></div><img src="img/p-prinsess.png" alt=""></a>
-</section>
-
-<section class="sort" id="sortiment"><div class="w">
- <div class="rubrad"><div><div class="skrift">Låt det smaka!</div><h2>Vårt sortiment</h2></div><div class="flikar" role="tablist" id="flikar"></div></div>
- <div class="hylla" id="hylla"></div>
-</div></section>
-
-<section class="bert" id="om"><div class="w">
- <div class="bild"><img src="img/fr05.jpg" alt="Fika ur Frödinges reklamfilm"></div>
- <div class="text">
-  <div class="skrift">Om Frödinge</div>
-  <h2>Småländsk generositet. Det är Frödinge i en liten ask.</h2>
-  <p>Småländskt förknippas ofta med sparsamhet. Inte hos oss. Vi bjuder på oss själva och delar med oss av småländska kulturskatter som ostkaka, paj, tårta och kladdkaka.</p>
-  <p>Cirka 100 duktiga personer jobbar i fabriken i Frödinge – med bakning, verkstad, lager, tvätteri, produktutveckling, lab, el och kontor.</p>
- </div>
-</div></section>
-
-<section class="ostkaka"><div class="w">
- <div>
-  <div class="ar">1955</div>
-  <h2>Sveriges mest älskade kaka</h2>
-  <p>Ostkakan har varit en småländsk kulturskatt sedan 1600-talet. 1955 gjorde klassikern från Frödinge sitt intåg i svenska hem – och vi har aldrig tummat på receptet: äkta mandel, färsk svensk mjölk och grädde från gårdar i hjärtat av Småland.</p>
- </div>
+<section class="band b-ost" id="ostkakor"><div class="w">
+ <div><h2>Ostkakor</h2><p>Sveriges mest älskade kaka. 1955 gjorde klassikern från Frödinge sitt intåg i svenska hem – med äkta mandel, färsk svensk mjölk och grädde. Servera den ljummen med färska bär.</p>
+ <ul><li>Ostkaka</li><li>Ostkaka 600 g</li><li>Lättare ostkaka</li><li>Julostkaka</li><li>Saffransostkaka</li></ul></div>
  <img src="img/p-ostkaka.png" alt="Frödinge ostkaka">
+</div><svg class="kant" viewBox="0 0 160 22" preserveAspectRatio="none"><path d="M0 22V11c20 0 20-11 40-11s20 11 40 11 20-11 40-11 20 11 40 11v11z" fill="#9a85bd"/></svg></section>
+
+<section class="band b-kladd om"><div class="w">
+ <div><h2>Kladdkakor</h2><p>Din bästa kompis i alla lägen. Precis lagom mycket krämig choklad, så att kakan blir härligt kladdig. Servera med en klick nyvispad grädde.</p>
+ <ul><li>Kladdkaka storpack</li><li>Kladdkaka</li><li>Citronkladdkaka</li><li>Kärleksmumskladdkaka</li><li>Saffranskladdkaka</li><li>Semmelkladdkaka</li><li>Glutenfri kladdkaka</li></ul></div>
+ <img src="img/p-kladdkaka.png" alt="Frödinge kladdkaka">
+</div><svg class="kant" viewBox="0 0 160 22" preserveAspectRatio="none"><path d="M0 22V11c20 0 20-11 40-11s20 11 40 11 20-11 40-11 20 11 40 11v11z" fill="#8198cc"/></svg></section>
+
+<section class="band b-paj"><div class="w">
+ <div><h2>Dessertpajer</h2><p>En vardagsfika behöver inte vara vardaglig. Frukt- och bärpajer med rikligt med syrliga bär, bakade med äkta frasig mördeg.</p>
+ <ul><li>Äppelpaj</li><li>Blåbärspaj</li></ul></div>
+ <img src="img/p-blabarspaj.png" alt="Frödinge blåbärspaj">
+</div><svg class="kant" viewBox="0 0 160 22" preserveAspectRatio="none"><path d="M0 22V11c20 0 20-11 40-11s20 11 40 11 20-11 40-11 20 11 40 11v11z" fill="#a3b94f"/></svg></section>
+
+<section class="band b-tarta om"><div class="w">
+ <div><h2>Klassiska tårtor</h2><p>En tårta gör varje dag till en högtid. Fryst och bakad från grunden med vår egen saftiga sockerkaka, hemgjord sylt och frasig maräng.</p>
+ <ul><li>Jordgubbstårta</li><li>Prinsesstårta</li><li>Schwarzwaldtårta</li></ul></div>
+ <img src="img/p-prinsess.png" alt="Frödinge prinsesstårta">
+</div><svg class="kant" viewBox="0 0 160 22" preserveAspectRatio="none"><path d="M0 22V11c20 0 20-11 40-11s20 11 40 11 20-11 40-11 20 11 40 11v11z" fill="var(--kram)"/></svg></section>
+
+<section class="text-sek" id="om"><div class="w">
+ <img src="img/fr02.jpg" alt="Ostkaka med jordgubbar på dukat bord">
+ <div>
+  <img class="mustasch" src="img/moustache.svg" alt="">
+  <h2>Småländsk generositet. Det är Frödinge i en liten ask.</h2>
+  <p>Småländskt är ofta förknippat med sparsamhet. Inte hos oss. Vi bjuder på oss själva och delar med oss av småländska kulturskatter som ostkaka och andra godsaker från bageriet.</p>
+  <p>Vår mjölk kommer från gårdar i Småland med omnejd. Idag är vi cirka 100 personer i fabriken i Frödinge – de flesta bakar ostkakor, pajer och tårtor.</p>
+ </div>
 </div></section>
 
 <section class="film" id="filmer"><div class="w">
- <div class="rubrad"><div><div class="skrift">Våra reklamfilmer</div><h2>Frödinge på film</h2></div><p>Här har vi samlat de senaste reklamfilmerna från Frödinge.</p></div>
+ <h2>Våra reklamfilmer</h2>
  <div class="vids">
-  <button class="vid" data-id="B_HpkTvghd4"><img src="img/fr01.jpg" alt=""><span class="spela"><i></i>Reklamfilm</span></button>
-  <div class="sido">
-   <button class="vid" data-id="MnmV-hen6LE"><img src="img/fr03.jpg" alt=""><span class="spela"><i></i>Fossilfritt bageri</span></button>
-   <a class="yt" href="https://www.youtube.com/@frodinge4787" target="_blank" rel="noopener">Se alla våra filmer →</a>
-  </div>
+  <button class="vid" data-id="B_HpkTvghd4"><img src="img/fr01.jpg" alt=""><span>En annan sida av Småland</span></button>
+  <button class="vid" data-id="MnmV-hen6LE"><img src="img/fr03.jpg" alt=""><span>Ett fossilfritt bageri</span></button>
  </div>
+ <a class="alla" href="https://www.youtube.com/@frodinge4787" target="_blank" rel="noopener">Se alla filmer på YouTube →</a>
 </div></section>
 
-<section class="gron" id="ansvar">
+<section class="ansvar" id="ansvar">
  <img src="img/fr04.jpg" alt="Bageriet i Frödinge i höstlandskap">
- <div class="w"><div class="kortet">
-  <div class="skrift">Alltid från Småland!</div>
-  <h2>100 % förnybar energi</h2>
-  <p>Med pellets från småländska och svenska skogar, lokal fjärrvärme och förnybar energi från vatten och vindkraft har vi ställt om bageriet i Frödinge till förnybara energikällor.</p>
-  <div class="fakta"><div><b>100 %</b><span>förnybar energi</span></div><div><b>Från Sverige</b><span>märkt ostkaka</span></div><div><b>Lokalt</b><span>mjölk från Småland</span></div></div>
- </div></div>
+ <div class="w">
+  <h2>Ett bageri som går på förnybar energi</h2>
+  <p>Med pellets från småländska och svenska skogar, lokal fjärrvärme och el från vatten och vindkraft har vi ställt om bageriet i Frödinge till förnybara energikällor. Ostkakan bakas med svenska råvaror och är märkt Från Sverige.</p>
+ </div>
 </section>
-
-<section class="kontakt" id="kontakt"><div class="w">
- <div class="ruta"><div class="skrift">Kontakta oss gärna!</div><h3>Konsumentkontakt</h3><p>Omdöme, reklamation eller frågor om produkterna.</p><p><b>020 75 00 10</b> · mån–fre 09–11</p><p><a href="https://www.orkla.se/kontaktformular/">Kontaktformulär →</a></p></div>
- <div class="ruta farg"><div class="skrift">Sommarservering</div><h3>Ostkakeboden</h3><p>Stängd för i år – vi ses sommaren 2027!</p><p>Skolgatan 2, Vimmerby</p><p><b>070 312 26 92</b></p></div>
- <div class="ruta"><div class="skrift">Storkök & restaurang</div><h3>Foodservice</h3><p>Vårt storhushållssortiment beställs via Martin &amp; Servera, Menigo eller Svensk Cater.</p></div>
-</div></section>
 </main>
 
-<footer><div class="w">
+<footer id="kontakt"><div class="w">
  <div class="cols">
-  <div><img class="l" src="img/logo.png" alt="Frödinge"><p>Frödinge Mejeri AB<br>598 95 Vimmerby</p></div>
-  <div><h4>Produkter</h4><ul><li><a href="#sortiment">Ostkakor</a></li><li><a href="#sortiment">Kladdkakor</a></li><li><a href="#sortiment">Dessertpajer</a></li><li><a href="#sortiment">Klassiska tårtor</a></li></ul></div>
-  <div><h4>Frödinge</h4><ul><li><a href="#om">Om Frödinge</a></li><li><a href="#ansvar">Vårt ansvar</a></li><li><a href="#filmer">Reklamfilmer</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
-  <div><h4>Följ oss</h4><ul><li><a href="https://www.facebook.com/frodinge">Facebook</a></li><li><a href="https://www.instagram.com/frodingemejeri/">Instagram</a></li><li><a href="https://www.youtube.com/@frodinge4787">YouTube</a></li></ul></div>
+  <div><img src="img/logo.png" alt="Frödinge"><p>Frödinge Mejeri AB</p><p>598 95 Vimmerby</p></div>
+  <div><h3>Konsumentkontakt</h3><p>020 75 00 10</p><p>Mån–fre kl 09–11</p><p><a href="https://www.orkla.se/kontaktformular/">Kontaktformulär</a></p></div>
+  <div><h3>Ostkakeboden</h3><p>Skolgatan 2, Vimmerby</p><p>070 312 26 92</p><p>Öppnar igen sommaren 2027</p></div>
+  <div><h3>Följ oss</h3><p><a href="https://www.facebook.com/frodinge">Facebook</a></p><p><a href="https://www.instagram.com/frodingemejeri/">Instagram</a></p><p><a href="https://www.youtube.com/@frodinge4787">YouTube</a></p></div>
  </div>
- <div class="botten"><span>Designförslag. Innehåll och bilder © Orkla / Frödinge Mejeri AB.</span><span>Frödinge är en del av Orkla</span></div>
+ <div class="botten"><span>Foodservice: beställ via Martin &amp; Servera, Menigo eller Svensk Cater.</span><span>Frödinge är en del av Orkla</span></div>
 </div></footer>
 
 <script>
-const FARG=["var(--gul)","var(--lila)","var(--bla)","var(--gron)"];
-const KAT=[
- ["Ostkakor",[["Ostkaka","300 g","p-ostkaka"],["Ostkaka","600 g","p-ostkaka600"],["Lättare ostkaka","","p-lattare"],["Julostkaka","750 g","p-julostkaka"],["Saffransostkaka","","p-saffransostkaka"]]],
- ["Kladdkakor",[["Kladdkaka storpack","525 g","p-kladdstor"],["Kladdkaka","Originalet · 400 g","p-kladdkaka"],["Citronkladdkaka","Med vit choklad · 400 g","p-citron"],["Kärleksmumskladdkaka","","p-karleksmums"],["Saffranskladdkaka","400 g","p-saffranskladd"],["Semmelkladdkaka","400 g","p-semmel"],["Glutenfri kladdkaka","380 g","p-glutenfri"]]],
- ["Dessertpajer",[["Äppelpaj","400 g","p-appelpaj"],["Blåbärspaj","Massor av härliga blåbär · 400 g","p-blabarspaj"]]],
- ["Klassiska tårtor",[["Jordgubbstårta","500 g","p-jordgubb"],["Prinsesstårta","En gräddig marsipandröm · 480 g","p-prinsess"],["Schwarzwaldtårta","400 g","p-schwarzwald"]]]
-];
-const flikar=document.getElementById('flikar'),hylla=document.getElementById('hylla');
-const vag='<svg viewBox="0 0 160 16" preserveAspectRatio="none"><path d="M0 16V8c20 0 20-8 40-8s20 8 40 8 20-8 40-8 20 8 40 8v8z" fill="currentColor"/></svg>';
-function visa(i){
- [...flikar.children].forEach((b,j)=>b.setAttribute('aria-selected',i===j));
- hylla.innerHTML=KAT[i][1].map(([n,v,f])=>`<div class="prod"><div class="top" style="background:${FARG[i]};color:var(--vit)"><img src="img/${f}.png" alt="${n}" loading="lazy">${vag}</div><div class="txt"><h3>${n}</h3><small>${v||'&nbsp;'}</small></div></div>`).join('');
- hylla.scrollLeft=0;
-}
-KAT.forEach(([n],i)=>{const b=document.createElement('button');b.role='tab';b.textContent=n;b.onclick=()=>visa(i);flikar.appendChild(b)});
-visa(0);
-document.querySelectorAll('.kort').forEach(a=>a.addEventListener('click',()=>visa(+a.dataset.tab)));
-document.querySelectorAll('.vid').forEach(v=>v.addEventListener('click',()=>{
- v.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${v.dataset.id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Frödinge film"></iframe>`;
+const v=document.querySelector('.hero video'),b=document.getElementById('paus');
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.pause();b.textContent='Spela filmen'}
+b.onclick=()=>{if(v.paused){v.play();b.textContent='Pausa filmen'}else{v.pause();b.textContent='Spela filmen'}};
+document.querySelectorAll('.vid').forEach(x=>x.addEventListener('click',()=>{
+ x.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${x.dataset.id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="Frödinge reklamfilm"></iframe>`;
 },{once:true}));
 </script>
 </body>
